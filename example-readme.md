@@ -12,7 +12,7 @@
 
 ## Existing Features
 
-*What features does your racing game have? (bullet points)*
+*What features does your app have? (bullet points)*
 
 
 
