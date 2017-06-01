@@ -63,7 +63,7 @@ If you want to push yourself and learn something new, optionally consider doing 
 
 ## WHAT WE ARE LOOKING FOR
 
-####Code must be...
+#### Code must be...
 * Clean   
   - no unused or commented-out code   
   - proper spacing and indentation  
@@ -79,7 +79,7 @@ See the [feedback document](./feedback.md) for the criteria on which your projec
 ## ACCESS TO INSTRUCTORS
 We will hold 1:1s throughout the week. We will also do mini lessons on certain topics if we notice that several people are running into the same issues.
 
-##FINAL DELIVERABLES
+## FINAL DELIVERABLES
 
 * Completion of the **core requirements**
 * A link to your website **hosted on Heroku**
@@ -96,4 +96,4 @@ We will hold 1:1s throughout the week. We will also do mini lessons on certain t
 * Please set your SublimeText font to at least 20.0 pixels.
 * And speak up!
 
-###HAPPY CODING :)
+### HAPPY CODING :)
