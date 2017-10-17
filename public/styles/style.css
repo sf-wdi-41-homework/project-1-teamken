@@ -37,8 +37,7 @@ header img{
   margin-left: 30%;
 }
 
-.slides {
-  background-color: grey;
+.w3-content {
   height: 300px;
   width: 67%;
   float: right;
@@ -80,4 +79,9 @@ ul{
   height: 100px;
   width: 10%;
   border-radius: 50%;
+}
+
+.mySlides {
+  height: 100%;
+  width: 100%;
 }
