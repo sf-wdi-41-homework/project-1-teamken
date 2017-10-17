@@ -1,0 +1,24 @@
+{
+  "name": "project-1-teamken",
+  "version": "1.0.0",
+  "description": "It's time to put everything that you've learned in the past month together! For your first project you will build a full stack web application using jQuery and AJAX, Express, Node.js, Mongoose, and MongoDB.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sf-wdi-41-homework/project-1-teamken.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sf-wdi-41-homework/project-1-teamken/issues"
+  },
+  "homepage": "https://github.com/sf-wdi-41-homework/project-1-teamken#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "mongoose": "^4.12.3"
+  }
+}
