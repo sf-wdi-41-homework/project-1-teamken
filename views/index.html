@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Basketball</title>
+
+    <!-- STYLESHEETS -->
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="../public/styles/style.css">
+
+    <!-- VENDOR SCRIPTS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
+    <!-- APPLICATION SCRIPTS -->
+    <script src="../public/scripts/app.js"></script>
+
+    <style>
+      .mySlides {display:none}
+      .w3-left, .w3-right, .w3-badge {cursor:pointer}
+      .w3-badge {height:13px;width:13px;padding:0}
+    </style>
+
+  </head>
+  <body>
+
+      <header>
+          <div class="header">
+            <img class="headbanner"src="http://www-static.spulsecdn.net/pics/headers/1729/w-header2.jpg">
+            <img class="gamelogo" src="../public/images/gameLogo.png">
+          </div>
+      </header>
+
+      <div class="loginBox" >
+        <form class="loginForm" action="index.html" method="post">
+
+          <div class="username">
+            <label for="username" style="font-weight:bold;">Username:</label><br>
+            <input type="text" name="username" value="" placeholder="username"><br>
+          </div>
+
+          <div class="password">
+            <label for="password" style="font-weight:bold;">Password:</label><br>
+            <input type="text" name="password" value="" placeholder="password"><br>
+          </div>
+
+          <div class="buttons">
+            <input type="submit" name="signup" value="Signup" style="background-color: orange; color: white; border-radius: 5%;">
+            <input type="submit" name="submit" value="Login" style="margin-left: 20%; background-color: orange; color: white; border-radius: 5%;">
+          </div>
+
+        </form>
+
+
+      </div>
+
+
+        <div class="w3-content w3-display-container">
+
+          <img class="mySlides" src="../public/images/news1.jpg" style="width:100%; height:100%">
+          <img class="mySlides" src="../public/images/news2.jpg" style="width:100%; height:100%">
+          <img class="mySlides" src="../public/images/news3.jpg" style="width:100%; height:100%">
+
+          <div class="w3-center w3-container w3-section w3-large w3-text-white w3-display-bottommiddle" style="width:100%">
+            <div class="w3-left w3-hover-text-khaki" onclick="plusDivs(-1)">&#10094;</div>
+            <div class="w3-right w3-hover-text-khaki" onclick="plusDivs(1)">&#10095;</div>
+            <span class="w3-badge demo w3-border w3-transparent w3-hover-white" onclick="currentDiv(1)"></span>
+            <span class="w3-badge demo w3-border w3-transparent w3-hover-white" onclick="currentDiv(2)"></span>
+            <span class="w3-badge demo w3-border w3-transparent w3-hover-white" onclick="currentDiv(3)"></span>
+          </div>
+        </div>
+
+    <div class="fix">
+    </div>
+
+      <div class="gameInfo ">
+        <h1>Top players in use</h1>
+        <ul>
+          <li><a href="http://www.nba.com/players/russell/westbrook/201566"><img src="../public/images/westbrook.png" alt="" class="playerBox"></a></li>
+          <li><a href="http://www.nba.com/players/seth/curry/203552"><img src="../public/images/curry.png" alt="" class="playerBox"></a></li>
+          <li><a href="http://www.nba.com/players/lebron/james/2544"><img src="../public/images/lebron.png" alt="" class="playerBox"></a></li>
+          <li><a href="http://www.nba.com/players/kevin/durant/201142"><img src="../public/images/kevin.png" alt="" class="playerBox"></a></li>
+          <li><a href="http://www.nba.com/players/james/harden/201935"><img src="../public/images/harden.png" alt="" class="playerBox"></a></li>
+        </ul>
+
+      </div>
+
+      <footer>
+        <div class="footer">
+
+          <h4>© 2017 Company Ken & Kenneth Co.</h4>
+
+        </div>
+      </footer>
+
+      <script>
+        var slideIndex = 1;
+        showDivs(slideIndex);
+
+        function plusDivs(n) {
+          showDivs(slideIndex += n);
+        }
+
+        function currentDiv(n) {
+          showDivs(slideIndex = n);
+        }
+
+        function showDivs(n) {
+          var i;
+          var x = document.getElementsByClassName("mySlides");
+          var dots = document.getElementsByClassName("demo");
+          if (n > x.length) {slideIndex = 1}
+          if (n < 1) {slideIndex = x.length}
+          for (i = 0; i < x.length; i++) {
+             x[i].style.display = "none";
+          }
+          for (i = 0; i < dots.length; i++) {
+             dots[i].className = dots[i].className.replace(" w3-white", "");
+          }
+          x[slideIndex-1].style.display = "block";
+          dots[slideIndex-1].className += " w3-white";
+        }
+      </script>
+
+  </body>
+</html>
