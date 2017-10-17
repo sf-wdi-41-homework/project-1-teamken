@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="styles/style.css">
 
     <!-- VENDOR SCRIPTS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" ></script>
 
     <!-- APPLICATION SCRIPTS -->
     <script src="scripts/app.js"></script>
@@ -30,29 +30,23 @@
           </div>
       </header>
 
-      <div class="loginBox" >
-        <form class="loginForm" action="index.html" method="post">
-
-          <div class="username">
-            <label for="username" style="font-weight:bold;">Username:</label><br>
-            <input type="text" name="username" value="" placeholder="username"><br>
+        <div class="login-page">
+          <div class="form">
+            <form class="register-form" action="/signup" method="POST">
+              <input type="text" placeholder="name"/>
+              <input type="password" placeholder="password"/>
+              <input type="text" placeholder="email address"/>
+              <button>create</button>
+              <p class="message">Already registered? <a href="#">Sign In</a></p>
+            </form>
+            <form class="login-form" action="/login" method="POST">
+              <input type="text" placeholder="username"/>
+              <input type="password" placeholder="password"/>
+              <button>login</button>
+              <p class="message">Not registered? <a href="#">Create an account</a></p>
+            </form>
           </div>
-
-          <div class="password">
-            <label for="password" style="font-weight:bold;">Password:</label><br>
-            <input type="text" name="password" value="" placeholder="password"><br>
-          </div>
-
-          <div class="buttons">
-            <input type="submit" name="signup" value="Signup" style="background-color: orange; color: white; border-radius: 5%;">
-            <input type="submit" name="submit" value="Login" style="margin-left: 20%; background-color: orange; color: white; border-radius: 5%;">
-          </div>
-
-        </form>
-
-
-      </div>
-
+        </div>
 
         <div class="w3-content w3-display-container">
 
@@ -119,6 +113,11 @@
           x[slideIndex-1].style.display = "block";
           dots[slideIndex-1].className += " w3-white";
         }
+
+          $('.message a').click(function(){
+             $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
+          });
+
       </script>
 
   </body>
