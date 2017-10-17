@@ -108,9 +108,10 @@ ul{
 .twitter {
   height: 200px;
   width: 70%;
-  background-color: green;
+  background-color:black;
   float: right;
   margin-top: 2%;
+  color: blue;
 
 }
 
