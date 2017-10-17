@@ -160,6 +160,16 @@ ul{
   margin-top: 20%;
 }
 
+
+.statbox{
+background-color: #33363a;
+float:right;
+height:100%;
+width:60%;
+
+
+}
+
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
 
 .login-page {
