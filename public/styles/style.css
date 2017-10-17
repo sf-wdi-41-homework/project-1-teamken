@@ -1,14 +1,13 @@
 html{
   background-size: cover;
   width: 100%;
-  background-color: black;
+  background-image: url("../images/background.jpg");
 }
 
 body {
   height: 100%;
   width: 70%;
   margin: 0 auto;
-  background-color: orange;
 }
 
 header img{
@@ -17,21 +16,33 @@ header img{
 }
 
 .loginBox {
-  background-color: red;
+  background-size: cover;
+  background-image: url("../images/loginimg.jpg");
   height: 300px;
   width: 29%;
   float: left;
   margin-top: 1%;
-  margin-left: 1%;
+}
+
+.username {
+  margin-top: 30%;
+  margin-left: 30%;
+}
+.password {
+  margin-top: 5%;
+  margin-left: 30%;
+}
+.buttons {
+  margin-top: 13%;
+  margin-left: 30%;
 }
 
 .slides {
-  background-color: lime;
+  background-color: grey;
   height: 300px;
   width: 67%;
   float: right;
   margin-top: 1%;
-  margin-right: 1%;
 }
 
 .fix {
@@ -39,10 +50,11 @@ header img{
 }
 
 .gameInfo {
-  background-color: skyblue;
+  background-color: rgba(255, 255, 255, 0.5);
   height: 300px;
   width: 98%;
   margin: 10px auto;
+  border-radius: 25%;
 }
 
 .footer {
@@ -50,4 +62,22 @@ header img{
   width: 100%;
   background-color: yellow;
   margin-top: 20px;
+}
+
+.gameInfo h1 {
+  text-align: center;
+}
+
+ul{
+  list-style: none;
+}
+
+.playerBox {
+  background-color: lightblue;
+  float: left;
+  display: inline-block;
+  margin: 3% 4.5%;
+  height: 100px;
+  width: 10%;
+  border-radius: 50%;
 }

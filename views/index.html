@@ -3,9 +3,74 @@
   <head>
     <meta charset="utf-8">
     <title>Basketball</title>
+
+    <!-- STYLESHEETS -->
+    <link rel="stylesheet" href="../public/styles/style.css">
+
+    <!-- VENDOR SCRIPTS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
+    <!-- APPLICATION SCRIPTS -->
+    <script src="../public/scripts/app.js"></script>
+
   </head>
   <body>
-    
+
+      <header>
+        <div class="header">
+          <img src="http://www-static.spulsecdn.net/pics/headers/1729/w-header2.jpg">
+        </div>
+      </header>
+
+      <div class="loginBox">
+
+        <form class="loginForm" action="index.html" method="post">
+
+          <div class="username">
+            <label for="username" style="font-weight:bold;">Username:</label><br>
+            <input type="text" name="username" value="" placeholder="username"><br>
+          </div>
+
+          <div class="password">
+            <label for="password" style="font-weight:bold;">Password:</label><br>
+            <input type="text" name="password" value="" placeholder="password"><br>
+          </div>
+
+          <div class="buttons">
+            <input type="submit" name="signup" value="Signup" style="background-color: orange; color: white; border-radius: 5%;">
+            <input type="submit" name="submit" value="Login" style="margin-left: 20%; background-color: orange; color: white; border-radius: 5%;">
+          </div>
+
+        </form>
+
+
+      </div>
+
+      <div class="slides">
+        
+
+      </div>
+
+    <div class="fix">
+    </div>
+
+      <div class="gameInfo ">
+        <h1>Top players in use</h1>
+        <ul>
+          <li><a href="http://www.nba.com/players/russell/westbrook/201566"><img src="../public/images/westbrook.png" alt="" class="playerBox"></a></li>
+          <li><a href="http://www.nba.com/players/seth/curry/203552"><img src="../public/images/curry.png" alt="" class="playerBox"></a></li>
+          <li><a href="http://www.nba.com/players/lebron/james/2544"><img src="../public/images/lebron.png" alt="" class="playerBox"></a></li>
+          <li><a href="http://www.nba.com/players/kevin/durant/201142"><img src="../public/images/kevin.png" alt="" class="playerBox"></a></li>
+          <li><a href="http://www.nba.com/players/james/harden/201935"><img src="../public/images/harden.png" alt="" class="playerBox"></a></li>
+        </ul>
+
+      </div>
+
+      <footer>
+        <div class="footer">
+
+        </div>
+      </footer>
 
   </body>
 </html>
