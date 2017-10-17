@@ -33,6 +33,7 @@ body {
   margin-top: 2%;
 }
 
+
 .username {
   margin-top: 30%;
   margin-left: 10%;
@@ -131,7 +132,28 @@ ul{
   height: 300px;
   width: 100%;
   margin: 10px auto;
+}
 
 
+.userLoginBox {
+  background-color: rgba(255,255,0,0.8);
+  height: 200px;
+  width: 29%;
+  float: left;
+  margin-top: 2%;
+}
 
+.userLogo {
+  background-size: 100% 100%;
+  background-image: url("../images/gsw.jpg");
+  height: 35%;
+  width: 25%;
+  margin: 3%;
+  border-radius: 20%;
+}
+
+.logout {
+  border-radius: 5%;
+  margin-left: 50%;
+  margin-top: 20%;
 }
