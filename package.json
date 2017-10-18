@@ -18,7 +18,14 @@
   "homepage": "https://github.com/sf-wdi-41-homework/project-1-teamken#readme",
   "dependencies": {
     "body-parser": "^1.18.2",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.3",
     "express": "^4.16.2",
-    "mongoose": "^4.12.3"
+    "express-ejs-layouts": "^2.3.1",
+    "express-session": "^1.15.6",
+    "method-override": "^2.3.10",
+    "mongoose": "^4.12.3",
+    "morgan": "^1.9.0",
+    "passport": "^0.4.0"
   }
 }
