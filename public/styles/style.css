@@ -131,7 +131,7 @@ ul{
 
 .halfcourt {
   background-color: rgba(255, 255, 255, 0.5);
-  height: 300px;
+  height: 600px;
   width: 100%;
   margin: 10px auto;
 }
@@ -263,3 +263,30 @@ width:60%;
 .container .info span .fa {
   color: #EF3B3A;
 }
+
+.draftboard {
+  background-color: rgba(255, 255, 255, 0.5);
+  height: 700px;
+  width: 70%;
+  margin: 10px auto;
+  float: left;
+}
+
+.players{
+  background-color: white;
+  height: 18%;
+  width:23%;
+  margin: 1%;
+  float:left;
+
+
+}
+.draftbox{
+background-color: #33363a;
+float:right;
+height:700px;
+width:30%;
+margin: 10px auto;
+text-align: center;
+
+
