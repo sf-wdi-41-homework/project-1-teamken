@@ -1,6 +1,5 @@
 var db = require('./models')
 var mongoose       = require('mongoose');
-var passport       = require('passport');
 var flash          = require('connect-flash');
 var ejsLayouts     = require("express-ejs-layouts");
 var morgan         = require('morgan');
@@ -12,6 +11,24 @@ var methodOverride = require('method-override');
 var express = require('express'),
   bodyParser = require('body-parser');
 var app            = express();
+
+var passport = require('passport')
+  , LocalStrategy = require('passport-local').Strategy;
+
+passport.use(new LocalStrategy(
+  function(username, password, done) {
+    User.findOne({ username: username }, function (err, user) {
+      if (err) { return done(err); }
+      if (!user) {
+        return done(null, false, { message: 'Incorrect username.' });
+      }
+      if (!user.validPassword(password)) {
+        return done(null, false, { message: 'Incorrect password.' });
+      }
+      return done(null, user);
+    });
+  }
+));
 
   // Setup database
   var databaseURL = 'mongodb://localhost/local-authentication-with-passport'
@@ -30,13 +47,13 @@ var app            = express();
   // If your application uses persistent login sessions, passport.session()
   app.use(passport.session());
   app.use(flash());
-  app.use(methodOverride(function(request, response) {
-    if(request.body && typeof request.body === 'object' && '_method' in request.body) {
-      var method = request.body._method;
-      delete request.body._method;
-      return method;
-    }
-  }));
+  // app.use(methodOverride(function(request, response) {
+  //   if(request.body && typeof request.body === 'object' && '_method' in request.body) {
+  //     var method = request.body._method;
+  //     delete request.body._method;
+  //     return method;
+  //   }
+  // }));
 
 // serve static files in public
 app.use(express.static('public'));
@@ -44,9 +61,22 @@ app.use(express.static('public'));
 // body parser config to accept our datatypes
 app.use(bodyParser.urlencoded({ extended: true }));
 
+app.set('view engine', 'ejs');
+app.set("views", __dirname + "/views");
+
+require('./config/passport')(passport);
+
 app.get('/', function (req, res) {
   res.sendFile('views/index.html' , { root : __dirname});
 });
+
+app.post('api/login',function(req,res) {
+  passport.authenticate('local'),
+  function(req, res) {
+    // If this function gets called, authentication was successful.
+    // `req.user` contains the authenticated user.
+    res.redirect('/users/' + req.user.username);
+})
 
 
 app.listen(process.env.PORT || 3000, function () {
