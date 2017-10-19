@@ -76,7 +76,8 @@ app.post('api/login',function(req,res) {
     // If this function gets called, authentication was successful.
     // `req.user` contains the authenticated user.
     res.redirect('/users/' + req.user.username);
-})
+  }
+});
 
 
 app.listen(process.env.PORT || 3000, function () {
