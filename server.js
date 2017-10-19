@@ -7,6 +7,7 @@ var morgan         = require('morgan');
 var cookieParser   = require('cookie-parser');
 var session        = require('express-session');
 var methodOverride = require('method-override');
+var fetch = require('node-fetch-json');
 
 //require express in our app
 var express = require('express'),
@@ -48,6 +49,19 @@ app.get('/', function (req, res) {
   res.sendFile('views/index.html' , { root : __dirname});
 });
 
+app.get('/sportsapi', function(req, response){
+  apiEndpoint = "http://api.sportradar.us/nba/trial/v4/en/seasons/2016/REG/leaders.json?api_key=qycdwjh8vnrxckj26z5yc7pn";
+  fetch(apiEndpoint)
+    .then(function(res){
+      var points = res.categories[1];
+      var players = points.ranks.map( function(rank){
+        return rank;
+
+      })
+      console.log(players); 
+      return response.json(players);
+    });
+  });
 
 app.listen(process.env.PORT || 3000, function () {
   console.log('Example app listening at http://localhost:3000/');
