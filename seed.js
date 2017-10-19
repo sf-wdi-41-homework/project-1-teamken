@@ -11,15 +11,15 @@ var users = [{
 
 db.User.remove({}, function(err, user){
   console.log('removed all books');
-  users.forEach(function (userdata) {
+    users.forEach(function (userdata) {
     var user = new db.User({
       name: userdata.name,
       password: userdata.password
     });
-  });
-  user.save(function(err, savedUser){
-    if (err) {
-      return console.log(err);
-    }
+    user.save(function(err, savedUser){
+        if (err) {
+            return console.log(err);
+        }
+    });
   });
 });
