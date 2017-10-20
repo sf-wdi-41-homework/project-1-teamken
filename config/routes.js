@@ -11,7 +11,7 @@ function authenticatedUser(req, res, next) {
 
   // Otherwise
   req.flash('errorMessage', 'Login to access!');
-  return res.redirect('/login');
+  return res.redirect('/');
 }
 
 function unAuthenticatedUser(req, res, next) {
@@ -26,11 +26,9 @@ router.route('/')
   .get(staticsController.home);
 
 router.route('/signup')
-  .get(unAuthenticatedUser, usersController.getSignup)
   .post(usersController.postSignup)
 
 router.route('/login')
-  .get(unAuthenticatedUser, usersController.getLogin)
   .post(usersController.postLogin)
 
 router.route("/logout")
@@ -40,12 +38,3 @@ router.route("/secret")
   .get(authenticatedUser, usersController.getSecret)
 
 module.exports = router
-
-
-
-
-
-
-
-
-
