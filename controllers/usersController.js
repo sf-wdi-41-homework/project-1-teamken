@@ -2,12 +2,11 @@ var passport = require("passport")
 
 // GET /signup
 function getSignup(req, res) {
-  res.render('/', { message: req.flash('errorMessage') })
+  res.render('signup', { message: req.flash('errorMessage') })
 }
 
 // POST /signup
 function postSignup(req, res) {
-  console.log("IN POST SIGNUP");
   var signupStrategy = passport.authenticate('local-signup', {
     successRedirect: "/",
     failureRedirect: "/",
@@ -19,17 +18,13 @@ function postSignup(req, res) {
 
 // GET /login
 function getLogin(req, res) {
-  res.render('/', { message: req.flash('errorMessage') })
+  res.render('login', { message: req.flash('errorMessage') })
 }
 
 // POST /login
 function postLogin(req, res) {
-  console.log("IN ROUTER FOR LOGIN");
-  console.log(req.params);
-  console.log(req.route.stack);
-
   var loginStrategy = passport.authenticate('local-login', {
-    successRedirect: "/ManagementPage.ejs",
+    successRedirect: "/",
     failureRedirect: "/",
     failureFlash: true
   });
