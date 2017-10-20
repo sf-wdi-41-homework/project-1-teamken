@@ -4,7 +4,7 @@ var player = "http://api.sportradar.us/nba/trial/v4/en/players/ab532a66-9314-4d5
 
 $(document).ready(function() {
  console.log("Let's get coding!");
- getGeoQ();
+ // getGeoQ();
 });
 
 function getGeoQ() {
