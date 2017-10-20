@@ -68,7 +68,6 @@ module.exports = function ( passport ) {
       // Use lower-case e-mails to avoid case-sensitive e-mail matching
       email = email.toLowerCase();
     }
-
     // Search for a use with this email
     db.User.findOne({ 'local.email': email }, function ( err, user ) {
       console.log("Finding user: ", user);

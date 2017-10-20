@@ -2,6 +2,7 @@
 var express = require('express');
 var app            = express();
 var bodyParser = require('body-parser');
+var mongoose       = require('mongoose');
 var flash          = require('connect-flash');
 var ejsLayouts     = require("express-ejs-layouts");
 var morgan         = require('morgan');
@@ -70,10 +71,14 @@ app.get('/sportsapi', function(req, response){
         return rank;
 
       })
-      console.log(players); 
+      console.log(players);
       return response.json(players);
     });
   });
+
+
+var routes = require('./config/routes')
+app.use(routes);
 
 
 app.listen(process.env.PORT || 3000, function () {
