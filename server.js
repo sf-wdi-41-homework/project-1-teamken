@@ -73,7 +73,7 @@ app.get('/sportsapi', function(req, response){
           avgPlayer.average = rank.average;
         return avgPlayer;
       })
-      console.log(players); 
+      // console.log(players);
       return response.json(players);
     });
   });

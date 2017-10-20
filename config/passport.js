@@ -39,9 +39,9 @@ module.exports = function ( passport ) {
         return done( null, false, req.flash( 'signupMessage', 'This email is already used!' ) );
       } else {
 
-        var newUser = new User();
+        var newUser = new db.User();
         newUser.local.email = email;
-        newUser.local.password = User.encrypt( password );
+        newUser.local.password = db.User.encrypt( password );
 
         newUser.save( function ( err ) {
           if ( err ) {
