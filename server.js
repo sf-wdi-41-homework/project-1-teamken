@@ -54,39 +54,7 @@ app.post('/login',
     res.redirect('/users/' + req.user._id);
   });
 //
-// app.post('/signup', function (req,res) {
-  passport.use('local-signup', new LocalStrategy({
-        usernameField : 'email',
-        passwordField : 'password',
-        passReqToCallback : true
-    },
-    function(req, email, password, done) {
 
-		//look for user email in our database
-        User.findOne({ 'local.email' :  email }, function(err, user) {
-            if (err)
-                return done(err);
-            if (user) {
-                return done(null, false, req.flash('signupMessage', 'That email used'));
-            } else {
-                // create new user if not in the database
-                var newUser            = new User();
-                // I cant get encrypt from lecture to work therefore I looked online and found new way of getting hash
-                newUser.local.email    = email;
-                newUser.local.password = password; // use the generateHash function
-
-				// save user
-                newUser.save(function(err) {
-                    if (err)
-                        throw err;
-                    return done(null, newUser);
-                });
-            }
-
-        });
-  // res.redirect('views/index.html', {root: __dirname})
-}))
-// });
 app.post('/signup', passport.authenticate('local-signup', {
     successRedirect: '/',
     failureRedirect: '/',
