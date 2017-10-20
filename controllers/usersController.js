@@ -9,7 +9,7 @@ function getSignup(req, res) {
 function postSignup(req, res) {
   var signupStrategy = passport.authenticate('local-signup', {
     successRedirect: "/",
-    failureRedirect: "/signup",
+    failureRedirect: "/",
     failureFlash: true
   });
 
@@ -17,15 +17,15 @@ function postSignup(req, res) {
 }
 
 // GET /login
-function getLogin(req, res) { 
+function getLogin(req, res) {
   res.render('login', { message: req.flash('errorMessage') })
 }
 
-// POST /login 
+// POST /login
 function postLogin(req, res) {
   var loginStrategy = passport.authenticate('local-login', {
     successRedirect: "/",
-    failureRedirect: "/login",
+    failureRedirect: "/",
     failureFlash: true
   });
 

@@ -1,86 +1,106 @@
-var db = require('./models')
+//require express in our app
+var express = require('express');
+var app            = express();
+var bodyParser = require('body-parser');
 var mongoose       = require('mongoose');
 var flash          = require('connect-flash');
 var ejsLayouts     = require("express-ejs-layouts");
 var morgan         = require('morgan');
 var cookieParser   = require('cookie-parser');
 var session        = require('express-session');
-var methodOverride = require('method-override');
 var fetch = require('node-fetch-json');
+var db = require('./models');
+var User = require('./models/user.js');
 
-//require express in our app
-var express = require('express'),
-  bodyParser = require('body-parser');
-var app            = express();
+// pass passport configuration
+var passport = require('passport');
 
-var passport = require('passport')
-  , LocalStrategy = require('passport-local').Strategy;
-
-passport.use(new LocalStrategy(
-  function(username, password, done) {
-    User.findOne({ username: username }, function (err, user) {
-      if (err) { return done(err); }
-      if (!user) {
-        return done(null, false, { message: 'Incorrect username.' });
-      }
-      if (!user.validPassword(password)) {
-        return done(null, false, { message: 'Incorrect password.' });
-      }
-      return done(null, user);
-    });
-  }
-));
-
-  // Setup database
-  var databaseURL = 'mongodb://localhost/local-authentication-with-passport'
-  mongoose.connect(databaseURL);
-
-  // Setup middleware
-  app.use(morgan('dev'));
-  app.use(cookieParser());
-  app.use(bodyParser());
-  app.use(ejsLayouts);
-  app.use(express.static(__dirname + '/public'));
-  // use express.session() before passport.session() to ensure that the login session is restored in the correct order
-  app.use(session({ secret: 'WDI-GENERAL-ASSEMBLY-EXPRESS' }));
-  // passport.initialize() middleware is required to initialize Passport.
-  app.use(passport.initialize());
-  // If your application uses persistent login sessions, passport.session()
-  app.use(passport.session());
-  app.use(flash());
-  // app.use(methodOverride(function(request, response) {
-  //   if(request.body && typeof request.body === 'object' && '_method' in request.body) {
-  //     var method = request.body._method;
-  //     delete request.body._method;
-  //     return method;
-  //   }
-  // }));
-
-// serve static files in public
-app.use(express.static('public'));
-
-// body parser config to accept our datatypes
-app.use(bodyParser.urlencoded({ extended: true }));
-
-app.set('view engine', 'ejs');
+// =====================================================
+// CONFIGURATION
+// =====================================================
 app.set("views", __dirname + "/views");
 
+// Setup middleware
+app.use(morgan('dev'));
+app.use(cookieParser());
+app.use(bodyParser());
+app.use(ejsLayouts);
+app.use(express.static(__dirname + '/public'));
+app.use(session({ secret: 'WDI-GENERAL-ASSEMBLY-EXPRESS' })); // always before passport
+app.use(bodyParser.urlencoded({ extended: true }));  // nice formatting of form data
+
+// Configure passport
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(flash());
+
 require('./config/passport')(passport);
+var LocalStrategy   = require('passport-local').Strategy;
 
 app.get('/', function (req, res) {
   res.sendFile('views/index.html' , { root : __dirname});
 });
 
+// Optional alternative way to handle login redirect
+// app.post('/login', passport.authenticate('local-login', { successRedirect: '/users',
+//     failureRedirect: '/' }));
 
-app.post('api/login',function(req,res) {
-  passport.authenticate('local'),
+app.post('/login',
+    passport.authenticate('local-login'),
   function(req, res) {
+    console.log("Authenticating user: ", req.user._id);
     // If this function gets called, authentication was successful.
     // `req.user` contains the authenticated user.
-    res.redirect('/users/' + req.user.username);
-  }
+    res.redirect('/users/' + req.user._id);
+  });
+//
+// app.post('/signup', function (req,res) {
+  passport.use('local-signup', new LocalStrategy({
+        usernameField : 'email',
+        passwordField : 'password',
+        passReqToCallback : true
+    },
+    function(req, email, password, done) {
+
+		//look for user email in our database
+        User.findOne({ 'local.email' :  email }, function(err, user) {
+            if (err)
+                return done(err);
+            if (user) {
+                return done(null, false, req.flash('signupMessage', 'That email used'));
+            } else {
+                // create new user if not in the database
+                var newUser            = new User();
+                // I cant get encrypt from lecture to work therefore I looked online and found new way of getting hash
+                newUser.local.email    = email;
+                newUser.local.password = password; // use the generateHash function
+
+				// save user
+                newUser.save(function(err) {
+                    if (err)
+                        throw err;
+                    return done(null, newUser);
+                });
+            }
+
+        });
+  // res.redirect('views/index.html', {root: __dirname})
+}))
+// });
+app.post('/signup', passport.authenticate('local-signup', {
+    successRedirect: '/',
+    failureRedirect: '/',
+}));
+
+app.get('/users/:id', function(req, res) {
+    let user = db.User.findById(req.params.id);
+    console.log('Fetching user: ', user);
+    res.sendFile('views/managementPage.html', {root: __dirname})
 });
 
+app.get('/users', function(req, res) {
+    res.send('You are logged in.');
+});
 
 app.get('/sportsapi', function(req, response){
   apiEndpoint = "http://api.sportradar.us/nba/trial/v4/en/seasons/2016/REG/leaders.json?api_key=qycdwjh8vnrxckj26z5yc7pn";
@@ -91,10 +111,14 @@ app.get('/sportsapi', function(req, response){
         return rank;
 
       })
-      console.log(players); 
+      console.log(players);
       return response.json(players);
     });
   });
+
+
+var routes = require('./config/routes')
+app.use(routes);
 
 
 app.listen(process.env.PORT || 3000, function () {

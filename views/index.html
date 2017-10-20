@@ -12,7 +12,7 @@
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" ></script>
 
     <!-- APPLICATION SCRIPTS -->
-    <script src="scripts/app.js"></script>
+    <!--<script src="scripts/app.js"></script>-->
 
     <style>
       .mySlides {display:none}
@@ -33,16 +33,16 @@
         <div class="login-page">
           <div class="form">
             <form class="register-form" action="/signup" method="POST">
-              <input type="text" placeholder="name"/>
-              <input type="password" placeholder="password"/>
-              <input type="text" placeholder="email address"/>
+              <!--TODO: Add this username field to your User model!-->
+              <input type="text" name="email" placeholder="email address"/>
+              <input type="password" name="password" placeholder="password"/>
               <button>create</button>
               <p class="message">Already registered? <a href="#">Sign In</a></p>
             </form>
             <form class="login-form" action="/login" method="POST">
-              <input type="text" placeholder="username"/>
-              <input type="password" placeholder="password"/>
-              <input type="submit" name="" value="Login">
+              <input type="text" name="email" placeholder="email" value="kenneth@example.com" />
+              <input type="password" name="password" placeholder="password" value="abccba" />
+              <input type="submit" value="Login">
               <p class="message">Not registered? <a href="#">Create an account</a></p>
             </form>
           </div>
