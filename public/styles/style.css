@@ -256,6 +256,7 @@ ul{
   width: 70%;
   margin: 10px auto;
   float: left;
+
 }
 
 .players{
@@ -264,6 +265,7 @@ ul{
   width:23%;
   margin: 1%;
   float:left;
+  font-size: 8px;
 
 
 }
@@ -274,5 +276,7 @@ height:700px;
 width:30%;
 margin: 10px auto;
 text-align: center;
+
+
 
 

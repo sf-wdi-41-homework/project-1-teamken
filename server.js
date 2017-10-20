@@ -68,10 +68,12 @@ app.get('/sportsapi', function(req, response){
     .then(function(res){
       var points = res.categories[1];
       var players = points.ranks.map( function(rank){
-        return rank;
-
+        var avgPlayer = {};
+          avgPlayer.player =  rank.player;
+          avgPlayer.average = rank.average;
+        return avgPlayer;
       })
-      console.log(players);
+      console.log(players); 
       return response.json(players);
     });
   });
