@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Basketball</title>
+
+    <!-- STYLESHEETS -->
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="styles/style.css">
+
+    <!-- VENDOR SCRIPTS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" ></script>
+
+    <!-- APPLICATION SCRIPTS -->
+    <script src="scripts/app.js"></script>
+
+    <style>
+      .mySlides {display:none}
+      .w3-left, .w3-right, .w3-badge {cursor:pointer}
+      .w3-badge {height:13px;width:13px;padding:0}
+    </style>
+
+  </head>
+  <body>
+
+      <header>
+          <div class="header">
+            <img class="headbanner"src="http://www-static.spulsecdn.net/pics/headers/1729/w-header2.jpg">
+            <img class="gamelogo" src="images/gameLogo.png">
+          </div>
+      </header>
+      <% if(message.length > 0){ %>
+        <%= message %>
+      <% } %>
+      <%-body %>
+
+      <footer>
+        <div class="footer">
+
+          <h4>© 2017 Company Ken & Kenneth Co.</h4>
+
+        </div>
+      </footer>
+
+      <script>
+        var slideIndex = 1;
+        showDivs(slideIndex);
+
+        function plusDivs(n) {
+          showDivs(slideIndex += n);
+        }
+
+        function currentDiv(n) {
+          showDivs(slideIndex = n);
+        }
+
+        function showDivs(n) {
+          var i;
+          var x = document.getElementsByClassName("mySlides");
+          var dots = document.getElementsByClassName("demo");
+          if (n > x.length) {slideIndex = 1}
+          if (n < 1) {slideIndex = x.length}
+          for (i = 0; i < x.length; i++) {
+             x[i].style.display = "none";
+          }
+          for (i = 0; i < dots.length; i++) {
+             dots[i].className = dots[i].className.replace(" w3-white", "");
+          }
+          x[slideIndex-1].style.display = "block";
+          dots[slideIndex-1].className += " w3-white";
+        }
+
+          $('.message a').click(function(){
+             $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
+          });
+
+      </script>
+
+  </body>
+</html>

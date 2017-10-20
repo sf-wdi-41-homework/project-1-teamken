@@ -1,3 +1,4 @@
+
 var db = require('./models')
 var mongoose       = require('mongoose');
 var flash          = require('connect-flash');
@@ -34,7 +35,6 @@ passport.use(new LocalStrategy(
   // Setup database
   var databaseURL = 'mongodb://localhost/local-authentication-with-passport'
   mongoose.connect(databaseURL);
-
   // Setup middleware
   app.use(morgan('dev'));
   app.use(cookieParser());
@@ -67,19 +67,15 @@ app.set("views", __dirname + "/views");
 
 require('./config/passport')(passport);
 
-app.get('/', function (req, res) {
-  res.sendFile('views/index.html' , { root : __dirname});
-});
 
-
-app.post('api/login',function(req,res) {
-  passport.authenticate('local'),
-  function(req, res) {
-    // If this function gets called, authentication was successful.
-    // `req.user` contains the authenticated user.
-    res.redirect('/users/' + req.user.username);
-  }
-});
+// app.post('api/login',function(req,res) {
+//   passport.authenticate('local'),
+//   function(req, res) {
+//     // If this function gets called, authentication was successful.
+//     // `req.user` contains the authenticated user.
+//     res.redirect('/users/' + req.user.username);
+//   }
+// });
 
 
 app.get('/sportsapi', function(req, response){
@@ -91,10 +87,14 @@ app.get('/sportsapi', function(req, response){
         return rank;
 
       })
-      console.log(players); 
+      console.log(players);
       return response.json(players);
     });
   });
+
+
+var routes = require('./config/routes')
+app.use(routes);
 
 
 app.listen(process.env.PORT || 3000, function () {
