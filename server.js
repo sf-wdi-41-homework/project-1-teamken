@@ -56,6 +56,7 @@ app.get('/users/:id', function(req, res) {
     let user = db.User.findById(req.params.id);
     console.log('Fetching user: ', user);
     res.sendFile('views/managementPage.html', {root: __dirname})
+
 });
 
 app.get('/users', function(req, res) {
@@ -73,7 +74,9 @@ app.get('/sportsapi', function(req, response){
           avgPlayer.average = rank.average;
         return avgPlayer;
       })
+
       console.log(players);
+
       return response.json(players);
     });
   });

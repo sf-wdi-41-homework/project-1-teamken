@@ -49,11 +49,11 @@ module.exports = function ( passport ) {
                       return done(null, newUser);
                   });
               }
-
           });
     // res.redirect('views/index.html', {root: __dirname})
   }))
 })
+
 
   app.post('/signup', passport.authenticate('local-signup', {
       successRedirect: '/',

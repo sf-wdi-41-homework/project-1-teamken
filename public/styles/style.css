@@ -76,7 +76,7 @@ body {
   margin-top: 2%;
 }
 
-ul{
+.ul {
   list-style: none;
 }
 
@@ -266,6 +266,7 @@ ul{
   margin: 1%;
   float:left;
   font-size: 8px;
+  line-height: 125%;
 
 
 }
@@ -276,6 +277,7 @@ height:700px;
 width:30%;
 margin: 10px auto;
 text-align: center;
+color:white;
 
 
 
